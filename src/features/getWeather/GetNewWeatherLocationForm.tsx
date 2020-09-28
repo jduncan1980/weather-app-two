@@ -25,8 +25,17 @@ export default function GetWeatherForm() {
 	};
 
 	return (
-		<Flex>
-			<Text>Enter City:</Text>
+		<Flex
+			sx={{
+				alignItems: 'center',
+				justifyContent: 'center',
+				marginY: '30px',
+				// bg: 'muted',
+			}}
+		>
+			<Text sx={{ fontSize: [3, 4, 5], marginRight: '10px', color: '' }}>
+				Enter City:
+			</Text>
 			<SearchBar updateLocation={updateLocation} />
 		</Flex>
 	);
