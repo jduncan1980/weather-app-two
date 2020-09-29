@@ -13,7 +13,7 @@ interface ILocation {
 	longitude: number;
 }
 
-export default function GetWeatherForm() {
+export default function GetNewWeatherLocationForm(): React.ReactElement {
 	const dispatch = useDispatch();
 
 	const updateLocation = (

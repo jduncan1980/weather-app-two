@@ -6,7 +6,7 @@ import DisplayDailyWeather from './components/DisplayDailyWeather';
 import LocationContainer from './components/LocationContainer';
 import background from './images/background.jpg';
 
-function App() {
+function App(): React.ReactElement {
 	return (
 		<Container
 			sx={{
@@ -21,8 +21,8 @@ function App() {
 			}}
 		>
 			<LocationContainer />
-			<DisplayDailyWeather />
 			<CurrentWeather />
+			<DisplayDailyWeather />
 		</Container>
 	);
 }

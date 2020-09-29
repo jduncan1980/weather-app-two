@@ -7,7 +7,7 @@ export const getUserLocation = createAsyncThunk(
 	'location/getUserLocation',
 	async (args: void, { dispatch }) => {
 		const location = await axios.get(`https://geolocation-db.com/json/${key}`);
-		console.log(location);
+		// console.log(location);
 		await dispatch(
 			getWeather({
 				lat: location.data.latitude,

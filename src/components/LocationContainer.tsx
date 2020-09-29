@@ -3,7 +3,7 @@ import GetNewWeatherLocation from '../features/getWeather/GetNewWeatherLocationF
 import Geolocation from '../features/geolocation/Geolocation';
 import { Container } from 'theme-ui';
 
-export default function LocationContainer() {
+export default function LocationContainer(): React.ReactElement {
 	return (
 		<Container
 			sx={{
