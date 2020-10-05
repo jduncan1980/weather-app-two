@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Flex } from 'theme-ui';
+import { Flex, Container } from 'theme-ui';
 import DailyWeatherCard from './DailyWeatherCard';
 
 interface Props {
@@ -31,11 +31,13 @@ interface Props {
 export default function DisplayDailyWeather(): React.ReactElement {
 	const dailyWeather = useSelector((state: any) => state.weather.daily);
 	return (
-		<Flex sx={{ width: '80%', justifyContent: 'center', flexWrap: 'wrap' }}>
-			{dailyWeather &&
-				dailyWeather.map((day: Props) => {
-					return <DailyWeatherCard day={day} key={day.dt} />;
-				})}
-		</Flex>
+		<Container>
+			<Flex sx={{ width: '80%', justifyContent: 'center', flexWrap: 'wrap' }}>
+				{dailyWeather &&
+					dailyWeather.map((day: Props) => {
+						return <DailyWeatherCard day={day} key={day.dt} />;
+					})}
+			</Flex>
+		</Container>
 	);
 }

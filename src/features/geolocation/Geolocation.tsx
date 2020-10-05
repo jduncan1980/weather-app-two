@@ -24,7 +24,9 @@ export default function Geolocation() {
 	// Else load Location or Error
 	return (
 		<Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
-			<Heading sx={{ fontSize: [4, 5, 6] }}>
+			<Heading
+				sx={{ fontSize: [1, 2, 5, 6], textAlign: 'center', margin: '10px' }}
+			>
 				{location.error
 					? location.error
 					: `${location.city}, ${location.state}, ${location.country_name}`}

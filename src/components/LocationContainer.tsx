@@ -7,11 +7,8 @@ export default function LocationContainer(): React.ReactElement {
 	return (
 		<Container
 			sx={{
-				bg: 'muted',
-				paddingY: '2%',
+				padding: '20px',
 				borderRadius: '10px',
-				width: '70%',
-				marginBottom: '2%',
 			}}
 		>
 			<Geolocation />

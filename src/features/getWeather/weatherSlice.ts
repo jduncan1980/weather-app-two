@@ -6,14 +6,16 @@ interface IArgs {
 	// units: 'imperial' | 'metric';
 	lat: number | null;
 	lng: number | null;
+	// units: 'imperial' | 'metric';
 }
 
 export const getWeather = createAsyncThunk(
 	'location/getUserWeather',
-	async (args: IArgs) => {
+	async (args: IArgs, { getState }) => {
+		const state: any = getState();
 		if (args.lat && args.lng) {
 			const weather = await axios.get(
-				`http://api.openweathermap.org/data/2.5/onecall?lat=${args.lat}&lon=${args.lng}&units=imperial&APPID=${key}`
+				`http://api.openweathermap.org/data/2.5/onecall?lat=${args.lat}&lon=${args.lng}&units=${state.weather.units}&APPID=${key}`
 			);
 			return weather.data;
 		} else {
@@ -29,6 +31,7 @@ interface IState {
 	minutely: null | object[];
 	hourly: null | object[];
 	daily: null | object[];
+	units: 'imperial' | 'metric';
 }
 
 const initialState: IState = {
@@ -38,12 +41,17 @@ const initialState: IState = {
 	minutely: null,
 	hourly: null,
 	daily: null,
+	units: 'imperial',
 };
 
 const weatherSlice = createSlice({
 	name: 'weather',
 	initialState: initialState,
-	reducers: {},
+	reducers: {
+		setUnits: (state, { payload }) => {
+			state.units = payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(getWeather.pending, (state, { payload }) => {
 			state.loading = true;
@@ -70,4 +78,5 @@ const weatherSlice = createSlice({
 	},
 });
 
+export const { setUnits } = weatherSlice.actions;
 export default weatherSlice.reducer;

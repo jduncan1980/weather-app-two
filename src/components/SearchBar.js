@@ -1,10 +1,13 @@
+/** @jsx jsx */
 import React from 'react';
 import AlgoliaPlaces from 'algolia-places-react';
+import { jsx } from 'theme-ui';
 
 export default function SearchBar({ updateLocation }) {
 	return (
 		<AlgoliaPlaces
-			placeholder='Write an address here'
+			placeholder='City'
+			// sx={{ width: ['90%', null, '50%'] }}
 			options={{
 				appId: process.env.REACT_APP_ALGOLIA_ID,
 				apiKey: process.env.REACT_APP_ALGOLIA_KEY,
@@ -17,7 +20,6 @@ export default function SearchBar({ updateLocation }) {
 					latitude: suggestion.latlng.lat,
 					longitude: suggestion.latlng.lng,
 				};
-				// console.log(suggestion);
 				updateLocation(suggestion.latlng, newLocation);
 			}}
 			// onSuggestions={({ rawAnswer, query, suggestions }) =>

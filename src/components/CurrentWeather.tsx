@@ -1,28 +1,44 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Container, Text, Flex, Heading } from 'theme-ui';
-import WeatherIcon from 'react-open-weather-icons';
+import { Container, Text, Flex, Heading, Image } from 'theme-ui';
 import { format } from 'date-fns';
+import { formatTemp } from '../utils/formatTemp';
 
 export default function CurrentWeather(): React.ReactElement {
 	const current = useSelector((state: any) => state.weather.current);
-	console.log(current);
-	// const currentDay = new Date(current.dt);
+	const { units } = useSelector((state: any) => state.weather);
 
 	return (
-		<Container sx={{ width: '80%', bg: 'muted' }}>
+		<React.Fragment>
 			{current && (
-				<React.Fragment>
-					<Heading>{format(current.dt * 1000, 'EEEE, PPPPpppp')}</Heading>
-					<WeatherIcon name={current.weather[0].icon} />
-					<Text>{current.weather[0].description.toUpperCase()}</Text>
-					<Text>Current Temperature: {current.temp}</Text>
-					<Text>Feels Like: {current.feels_like}</Text>
-					<Text>Humidity: {current.humidity}</Text>
+				<Container
+					sx={{
+						padding: '20px',
+						borderRadius: '10px',
+					}}
+				>
+					<Heading>{format(current.dt * 1000, 'EEEE, MMMM do h:mm b')}</Heading>
+					<Flex
+						sx={{
+							width: '25%',
+							flexDirection: 'column',
+							alignItems: 'center',
+							marginY: '20px',
+						}}
+					>
+						<Text>{current.weather[0].description.toUpperCase()}</Text>
+						<Image
+							src={`http://openweathermap.org/img/wn/${current.weather[0].icon}@4x.png`}
+						/>
+					</Flex>
+
+					<Text>Current Temperature: {formatTemp(current.temp, units)}</Text>
+					<Text>Feels Like: {formatTemp(current.feels_like, units)}</Text>
+					<Text>Humidity: {current.humidity.toFixed()}%</Text>
 					<Text>Sunrise: {format(current.sunrise * 1000, 'h:m b')}</Text>
-					<Text>Sunset: {format(current.sunset * 1000, 'h:m bb')}</Text>
-				</React.Fragment>
+					<Text>Sunset: {format(current.sunset * 1000, 'h:m b')}</Text>
+				</Container>
 			)}
-		</Container>
+		</React.Fragment>
 	);
 }

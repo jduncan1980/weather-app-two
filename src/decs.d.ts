@@ -1,1 +1,1 @@
-declare module 'react-open-weather-icons';
+declare module 'react-switch';
