@@ -1,31 +1,34 @@
+/** @jsx jsx */
 import React from 'react';
-import { Container } from 'theme-ui';
-import './App.css';
+import { Container, Grid, jsx } from 'theme-ui';
 import CurrentWeather from './components/CurrentWeather';
 import DisplayDailyWeather from './components/DisplayDailyWeather';
 import DisplayHourlyWeather from './components/DisplayHourlyWeather';
-import LocationContainer from './components/LocationContainer';
+import Header from './components/Header';
+import Geolocation from './features/geolocation/Geolocation';
+import GetNewWeatherLocationForm from './features/getWeather/GetNewWeatherLocationForm';
 import background from './images/background.jpg';
 
-function App(): React.ReactElement {
+const App: React.FC = () => {
 	return (
-		<Container
+		<Grid
+		// columns={4}
 			sx={{
 				padding: ['5px', null, '20px'],
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
 				backgroundColor: 'blue',
 				background: `linear-gradient(349deg, rgba(187,209,229,0.50) 0%, rgba(187,209,229,0.50) 100%), url(${background})`,
 				minHeight: '100vh',
-				borderRadius: 'none',
+				overflowX: 'hidden',
+				gridTemplateColumns: "repeat(4, 1fr)",
+				gridTemplateAreas: 
+				'". . . ." "current current header header" "current current daily daily"'
 			}}
 		>
-			<LocationContainer />
+			<Geolocation />
+			<Header />
 			<CurrentWeather />
-			<DisplayHourlyWeather />
 			<DisplayDailyWeather />
-		</Container>
+		</Grid>
 	);
 }
 

@@ -1,36 +1,19 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserLocation } from './locationSlice';
-import { Spinner, Text, Heading, Flex } from 'theme-ui';
+// import { Spinner, Text, Heading, Flex } from 'theme-ui';
+import {RootState} from '../../store/store';
 
-export default function Geolocation() {
+const Geolocation: React.FC = () => {
 	const dispatch = useDispatch();
-	const location = useSelector((state: any) => state.location);
+	const location = useSelector((state: RootState) => state.location);
 
 	useEffect(() => {
 		dispatch(getUserLocation());
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	// If Fetching location load...
-	if (location.loading) {
-		return (
-			<Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
-				<Spinner size='96' strokeWidth='6' />
-				<Text variant='loading'>Fetching Location...</Text>
-			</Flex>
-		);
-	}
-	// Else load Location or Error
-	return (
-		<Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
-			<Heading
-				sx={{ fontSize: [1, 2, 5, 6], textAlign: 'center', margin: '10px' }}
-			>
-				{location.error
-					? location.error
-					: `${location.city}, ${location.state}, ${location.country_name}`}
-			</Heading>
-		</Flex>
-	);
+	return null;
 }
+
+export default Geolocation;

@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+// import { RootState } from '../../store/store';
+import { ICurrent, IPropsDaily, IPropsHourly } from '../../types';
 const key = process.env.REACT_APP_WEATHER_KEY;
 
 interface IArgs {
-	// units: 'imperial' | 'metric';
 	lat: number | null;
 	lng: number | null;
-	// units: 'imperial' | 'metric';
 }
 
 export const getWeather = createAsyncThunk(
@@ -27,10 +27,10 @@ export const getWeather = createAsyncThunk(
 interface IState {
 	loading: boolean;
 	error: null | string;
-	current: null | object;
+	current: null | ICurrent;
 	minutely: null | object[];
-	hourly: null | object[];
-	daily: null | object[];
+	hourly: null | IPropsHourly[];
+	daily: null | IPropsDaily[];
 	units: 'imperial' | 'metric';
 }
 

@@ -18,7 +18,7 @@ export const getUserLocation = createAsyncThunk(
 	}
 );
 
-interface IState {
+export interface IState {
 	loading: boolean;
 	error: null | string;
 	country_name: null | string;
@@ -28,7 +28,7 @@ interface IState {
 	longitude: null | number;
 }
 
-const initialState: IState = {
+export const initialState: IState = {
 	loading: false,
 	error: null,
 	country_name: null,
