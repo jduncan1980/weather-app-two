@@ -1,12 +1,9 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getUserLocation } from './locationSlice';
-// import { Spinner, Text, Heading, Flex } from 'theme-ui';
-import {RootState} from '../../store/store';
 
-const Geolocation: React.FC = () => {
+const Geolocation: React.FC = (): null => {
 	const dispatch = useDispatch();
-	const location = useSelector((state: RootState) => state.location);
 
 	useEffect(() => {
 		dispatch(getUserLocation());
@@ -14,6 +11,6 @@ const Geolocation: React.FC = () => {
 	}, []);
 
 	return null;
-}
+};
 
 export default Geolocation;

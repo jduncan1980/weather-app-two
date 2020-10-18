@@ -20,9 +20,12 @@ export const theme = {
 	colors: {
 		text: '#000',
 		background: '#fff',
-		primary: '#07c',
+		primary: '#0e5678',
 		secondary: '#30c',
 		muted: '#f6f6f6',
+		trans: 'rgba(55,82,92,0.49)',
+		cardBG: '#c1dce9',
+		yellow: '#e5e28f'
 	},
 	text: {
 		heading: {

@@ -9,27 +9,30 @@ const DisplayHourlyWeather: React.FC = () => {
 	const hourlyWeather = useSelector((state: RootState) => state.weather.hourly);
 
 	return (
-		<Flex sx={{gridArea: 'hourly', flexDirection: 'column', alignItems: 'center'}}>
-			<Heading sx={{marginBottom: '10px'}}>Hourly Forecast</Heading>
+		<Box sx={{ gridArea: 'hourly', width: '100%' }}>
+			<Heading sx={{ marginBottom: '10px', textAlign: 'center' }}>
+				Hourly Forecast
+			</Heading>
 			<Flex
-			sx={{
-				overflowX: 'auto',
-				justifyContent: 'space-between',
-				width: '10%',
-				border: '2px solid black',
-				borderRadius: '10px',
-				padding: '10px',
-			}}
-		>	
-			{hourlyWeather &&
-				hourlyWeather.map((hour: IPropsHourly) => {
-					return <HourlyWeatherCard hour={hour} key={hour.dt} />;
-				})}
+				sx={{
+					overflowX: 'scroll',
+					width: '100%',
+					border: '1px solid black',
+					borderRadius: '10px',
+					padding: '15px',
+					bg: 'yellow',
+					boxShadow: 'inset 0px 0px 10px 4px rgba(0,0,0,0.6)',
+				}}
+			>
+				{hourlyWeather &&
+					hourlyWeather.map((hour: IPropsHourly) => {
+						return <HourlyWeatherCard hour={hour} key={hour.dt} />;
+					})}
 				{/* Empty Box to add space to end of list */}
-				<Box sx={{minWidth: '50px'}}/>
+				<Box sx={{ minWidth: '50px' }} />
 			</Flex>
-		</Flex>
+		</Box>
 	);
 };
 
-export default DisplayHourlyWeather
+export default DisplayHourlyWeather;

@@ -4,11 +4,10 @@ import { Card, Text, Heading, Flex, Box, jsx, Image } from 'theme-ui';
 import { format } from 'date-fns';
 import { formatTemp } from '../utils/formatTemp';
 import { useSelector } from 'react-redux';
-import {IPropsDailyCard as Props} from '../types';
+import { IPropsDailyCard as Props } from '../types';
 import { RootState } from '../store/store';
 
-
-const DailyWeatherCard: React.FC<Props> = ({day}) => {
+const DailyWeatherCard: React.FC<Props> = ({ day }) => {
 	const forecastDay = format(day.dt * 1000, 'E MMM do');
 	const { units } = useSelector((state: RootState) => state.weather);
 
@@ -20,17 +19,18 @@ const DailyWeatherCard: React.FC<Props> = ({day}) => {
 				flexDirection: 'column',
 				alignItems: 'center',
 				border: '1px solid black',
-				padding: '1%',
+				padding: '2%',
 				borderRadius: '10px',
+				bg: 'cardBG',
+				width: ['100%', null, '30%'],
 			}}
 		>
 			<Heading>{forecastDay}</Heading>
-			<Box sx={{ width: '90%', color: 'black' }}>
+			<Flex sx={{ width: '90%', color: 'black', justifyContent: 'center' }}>
 				<Image
 					src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-					// sx={{ width: '100%', filter: 'grayscale(100%)' }}
 				/>
-			</Box>
+			</Flex>
 			<Flex sx={{ flexDirection: 'column', alignItems: 'center' }}>
 				<Text>LO: {formatTemp(day.temp.min, units)}</Text>
 				<Text>HI: {formatTemp(day.temp.max, units)}</Text>
@@ -39,6 +39,6 @@ const DailyWeatherCard: React.FC<Props> = ({day}) => {
 			</Flex>
 		</Card>
 	);
-}
+};
 
 export default DailyWeatherCard;

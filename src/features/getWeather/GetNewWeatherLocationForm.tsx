@@ -1,40 +1,41 @@
 /** @jsx jsx */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { getWeather} from './weatherSlice';
+import { getWeather } from './weatherSlice';
 import { setNewLocation } from '../geolocation/locationSlice';
 import { ILocation, ICoords } from '../../types';
 import { Flex, Text, jsx } from 'theme-ui';
-import SearchBar from '../../components/SearchBar';
-
-
+import SearchBar from './SearchBar';
 
 const GetNewWeatherLocationForm: React.FC = () => {
 	const dispatch = useDispatch();
 
-
-	const updateLocation = (
-		coords: ICoords,
-		location: ILocation
-	): void => {
+	const updateLocation = (coords: ICoords, location: ILocation): void => {
 		dispatch(setNewLocation(location));
 		dispatch(getWeather({ ...coords }));
 	};
 
 	return (
 		<Flex
+			as='label'
 			sx={{
-				flexDirection: 'column',
+				flexDirection: ['column', null, null, 'row'],
 				alignItems: 'center',
-				marginBottom: '10px'
+				marginRight: [0, null, null, '20px'],
 			}}
 		>
-			<Text sx={{ fontSize: [1, 2, 4], color: 'text', marginBottom: '10px'}}>
-				Change Location:
+			<Text
+				sx={{
+					fontSize: [1, 2, 3],
+					marginRight: [0, null, null, '5px'],
+					marginBottom: ['5px', null, null, 0],
+				}}
+			>
+				Change Location
 			</Text>
 			<SearchBar updateLocation={updateLocation} />
 		</Flex>
 	);
-}
+};
 
-export default GetNewWeatherLocationForm
+export default GetNewWeatherLocationForm;
