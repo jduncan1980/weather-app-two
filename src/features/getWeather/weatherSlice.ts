@@ -15,7 +15,7 @@ export const getWeather = createAsyncThunk(
 		const state: any = getState();
 		if (args.lat && args.lng) {
 			const weather = await axios.get(
-				`http://api.openweathermap.org/data/2.5/onecall?lat=${args.lat}&lon=${args.lng}&units=${state.weather.units}&APPID=${key}`
+				`https://api.openweathermap.org/data/2.5/onecall?lat=${args.lat}&lon=${args.lng}&units=${state.weather.units}&APPID=${key}`
 			);
 			return weather.data;
 		} else {
