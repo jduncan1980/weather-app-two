@@ -1,8 +1,6 @@
-/** @jsx jsx */
-// import React from 'react';
+import React from 'react';
 import AlgoliaPlaces from 'algolia-places-react';
 import { ILocation, ICoords } from '../../types';
-import { jsx } from 'theme-ui';
 
 interface ISuggestion {
 	country: string;

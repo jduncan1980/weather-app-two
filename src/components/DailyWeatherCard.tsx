@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from 'react';
-import { Card, Text, Heading, Flex, Box, jsx, Image } from 'theme-ui';
+import { Card, Text, Heading, Flex, jsx, Image } from 'theme-ui';
 import { format } from 'date-fns';
 import { formatTemp } from '../utils/formatTemp';
 import { useSelector } from 'react-redux';

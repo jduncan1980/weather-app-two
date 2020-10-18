@@ -22,6 +22,7 @@ const GetNewWeatherLocationForm: React.FC = () => {
 				flexDirection: ['column', null, null, 'row'],
 				alignItems: 'center',
 				marginRight: [0, null, null, '20px'],
+				color: 'text',
 			}}
 		>
 			<Text
@@ -29,6 +30,7 @@ const GetNewWeatherLocationForm: React.FC = () => {
 					fontSize: [1, 2, 3],
 					marginRight: [0, null, null, '5px'],
 					marginBottom: ['5px', null, null, 0],
+					color: 'white',
 				}}
 			>
 				Change Location

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Flex, Container, Heading } from 'theme-ui';
+import { Flex, Heading } from 'theme-ui';
 import { RootState } from '../store/store';
 import DailyWeatherCard from './DailyWeatherCard';
 import { IPropsDaily } from '../types';
