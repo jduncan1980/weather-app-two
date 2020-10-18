@@ -25,9 +25,6 @@ const CurrentWeather: React.FC = (): React.ReactElement => {
 						],
 						placeItems: 'start center',
 						borderRadius: '10px',
-						// border: '1px solid rgba(0,4,7,0.5)',
-						// bg: 'trans',
-						// boxShadow: '3px 3px 5px 0px rgba(0,0,0,0.36)',
 						padding: '40px',
 						height: '100%',
 						width: '100%',
@@ -44,9 +41,12 @@ const CurrentWeather: React.FC = (): React.ReactElement => {
 							gridArea: 'location',
 						}}
 					>
+						{/* If Error, show error, else show location. If there is a state, show state, else show nothing for state. */}
 						{location.error
 							? location.error
-							: `${location.city}, ${location.state}, ${
+							: `${location.city}, ${
+									location.state ? `${location.state},` : ''
+							  } ${
 									location.country_name === 'United States of America'
 										? 'United States'
 										: location.country_name
